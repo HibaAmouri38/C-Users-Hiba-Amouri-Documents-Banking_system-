@@ -1,0 +1,375 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title data-i18n="app_name">SQLite Manager</title>
+    <link async="" rel="stylesheet" href="bank_files/bootstrap.css">
+		<link rel="stylesheet" href="bank_files/styles.css">    
+    <link rel="stylesheet" href="bank_files/index.css">
+  </head>
+
+  <body data-mode="drag" vbox="">
+      <div class="container">
+        <nav class="navbar navbar-expand-md">
+          <a class="navbar-brand" href="https://sqlmanager.freebusinessapps.net/manager" target="_blank">
+            <img class="img-fluid" src="bank_files/Logo-for-light-bg.svg" alt="SQLite Manager" title="SQLite Manager" height="60">
+          </a>
+          
+        </nav>
+
+          <p data-i18n="app_description2">Easily browse, edit and manage SQLite database inside your browser!</p>
+      
+          <hr>
+      
+          <p class="text-info" data-i18n="app_initial1">In order to work with this add-on, just open the app UI and drag a SQLite file to the designated area in the app</p>
+          <p class="text-info" data-i18n="app_initial2">You can execute 
+any SQLite command that you would like (SQL and SQLite have many 
+differences but SQLite has most of the SQL standard).</p>
+          <!--template-->
+          <div class="ui-container">
+              <input type="file">
+              <div hbox="" id="tools">
+                <div data-id="commands">
+                  <div class="list">
+                    <span data-i18n="ui_commands_file">File</span>
+                    <ul>
+                      <li data-cmd="query.file -&gt; click" data-i18n="ui_commands_file_open">Open a Database</li>
+                      <li data-cmd="api.emit -&gt; db.file" data-i18n="ui_commands_file_create">Create a new Database</li>
+                      <li data-cmd="sql.export" data-i18n="ui_commands_file_download">Download active Database</li>
+                      <li class="separator"></li>
+                      <li data-cmd="close" data-i18n="ui_commands_file_close">Close window</li>
+                      <li class="separator"></li>
+                      <li data-cmd="faqs" data-i18n="ui_commands_file_faq">Open FAQs page</li>
+                      <li data-cmd="sqlite -&gt; help" data-i18n="ui_commands_file_sql_help">Open SQLite help</li>
+                      <li data-cmd="math.js -&gt; help" data-i18n="ui_commands_file_math_help">Open Math.js help</li>
+                    </ul>
+                  </div>
+                  <div class="list">
+                    <span data-i18n="ui_commands_manage">Manage</span>
+                    <ul>
+                      <li data-cmd="box.clean" data-i18n="ui_commands_manage_clear">Clear Window</li>
+                      <li class="separator"></li>
+                      <li data-value="db_new(&quot;my_database.sqlite&quot;)"><b data-i18n="ui_commands_manage_create">Create a new database</b><span>db_new</span></li>
+                      <li data-value="db_download(%id%)"><b data-i18n="ui_commands_manage_download">Download selected database</b><span>db_download</span></li>
+                      <li data-value="db_remove(%id%)"><b data-i18n="ui_commands_manage_close">Close an existing database</b><span>db_remove</span></li>
+                      <li class="separator"></li>
+                      <li data-value="SELECT name FROM sqlite_master WHERE type IN ('table','view') AND name NOT LIKE 'sqlite_%' ORDER BY 1"><b data-i18n="ui_commands_manage_inspect">Inspect selected database</b><span>SELECT</span></li>
+                      <li data-value="PRAGMA table_info(table_name)"><b data-i18n="ui_commands_manage_table_pragma">Inspect table structure</b><span>PRAGMA</span></li>
+                      <li data-value="PRAGMA freelist_count;
+          PRAGMA page_count;
+          PRAGMA page_size;"><b data-i18n="ui_commands_manage_db_pragma">Database info</b><span>PRAGMA</span></li>
+                      <li data-value="VACUUM"><b data-i18n="ui_commands_manage_vacuum">Optimize the database</b><span>VACUUM</span></li>
+                      <li class="separator"></li>
+                      <li data-cmd="open.js.editor" data-i18n="ui_commands_manage_js">Open JavaScript editor</li>
+                    </ul>
+                  </div>
+                  <div class="list" data-disabled="false">
+                    <span data-i18n="ui_commands_history">History</span>
+                    <ul id="history">
+                      <li data-value="select * from Account" title="select * from Account">select * from Account</li><li data-value="CREATE TABLE  Account (
+            Acc INTEGER PRIMARY KEY,
+            Name  CHAR  NOT NULL,
+             DOB  INTEGER,
+           Pin INTEGER, Acc_Type CHAR, Nationality CHAR ,Caste CHAR ,MICR_No INTEGER , Gender CHAR ,Mob INTEGER,Address CHAR, Sec_Q  CHAR,Sec_A CHAR , Balance INTEGER
+          )" title="CREATE TABLE  Account (
+            Acc INTEGER PRIMARY KEY,
+            Name  CHAR  NOT NULL,
+             DOB  INTEGER,
+           Pin INTEGER, Acc_Type CHAR, Nationality CHAR ,Caste CHAR ,MICR_No INTEGER , Gender CHAR ,Mob INTEGER,Address CHAR, Sec_Q  CHAR,Sec_A CHAR , Balance INTEGER
+          )">CREATE TABLE  Account (↵            Acc INTEGER PRIMARY 
+KEY,↵            Name  CHAR  NOT NULL,↵             DOB  INTEGER,↵      
+     Pin INTEGER, Acc_Type CHAR, Nationality CHAR ,Caste CHAR ,MICR_No 
+INTEGER , Gender CHAR ,Mob INTEGER,Address CHAR, Sec_Q  CHAR,Sec_A CHAR ,
+ Balance INTEGER↵          )</li><li data-value="CREATE TABLE  Account (
+            Acc INTEGER PRIMARY KEY,
+            Name  CHAR  NOT NULL,
+             DOB  INTEGER,
+           Pin INTEGER, Acc_Type CHAR, Nationality CHAR ,Caste CHAR ,MICR_No INTEGER , Gender CHAR ,Mob INTEGER,Address CHAR, Sec.Q  CHAR,Sec.A CHAR , Balance INTEGER
+          )" title="CREATE TABLE  Account (
+            Acc INTEGER PRIMARY KEY,
+            Name  CHAR  NOT NULL,
+             DOB  INTEGER,
+           Pin INTEGER, Acc_Type CHAR, Nationality CHAR ,Caste CHAR ,MICR_No INTEGER , Gender CHAR ,Mob INTEGER,Address CHAR, Sec.Q  CHAR,Sec.A CHAR , Balance INTEGER
+          )">CREATE TABLE  Account (↵            Acc INTEGER PRIMARY 
+KEY,↵            Name  CHAR  NOT NULL,↵             DOB  INTEGER,↵      
+     Pin INTEGER, Acc_Type CHAR, Nationality CHAR ,Caste CHAR ,MICR_No 
+INTEGER , Gender CHAR ,Mob INTEGER,Address CHAR, Sec.Q  CHAR,Sec.A CHAR ,
+ Balance INTEGER↵          )</li><li data-value="CREATE TABLE  Account (
+            Acc INTEGER PRIMARY KEY,
+            Name  CHAR  NOT NULL,
+             DOB  INTEGER,
+           Pin INTEGER,
+          )" title="CREATE TABLE  Account (
+            Acc INTEGER PRIMARY KEY,
+            Name  CHAR  NOT NULL,
+             DOB  INTEGER,
+           Pin INTEGER,
+          )">CREATE TABLE  Account (↵            Acc INTEGER PRIMARY 
+KEY,↵            Name  CHAR  NOT NULL,↵             DOB  INTEGER,↵      
+     Pin INTEGER,↵          )</li><li data-value="" title=""></li><li data-value="" title=""></li><li data-value="" title=""></li><li data-value="" title=""></li><li data-value="" title=""></li><li data-value="" title=""></li><li data-value="" title=""></li><li data-value="" title=""></li><li data-value="" title=""></li><li data-value="" title=""></li><li data-value="" title=""></li><li data-value="" title=""></li><li data-value="" title=""></li><li data-value="" title=""></li><li data-value="" title=""></li><li data-value="" title=""></li><li data-value="" title=""></li><li data-value="" title=""></li><li data-value="" title=""></li><li data-value="" title=""></li><li data-value="" title=""></li><li data-value="" title=""></li><li data-value="" title=""></li><li data-value="" title=""></li><li data-value="" title=""></li><li data-value="" title=""></li><li class="separator"></li>
+                      <li data-cmd="history.clear" data-i18n="ui_commands_history_clear">Clear history</li>
+                    </ul>
+                  </div>
+                  <div class="list">
+                    <span data-i18n="ui_commands_sql">SQLite</span>
+                    <ul>
+                      <li class="disabled" data-i18n="ui_commands_sql_export">Export</li>
+                      <li data-value="SELECT * from table_name limit 10 | import as var_name"><b data-i18n="ui_commands_sql_export_to_math">Export to math.js as a matrix</b><span>SELECT</span></li>
+                      <li class="disabled" data-i18n="ui_commands_sql_tables">Managing Tables</li>
+                      <li data-value="CREATE TABLE [IF NOT EXISTS] table_name(
+            primary_key INTEGER PRIMARY KEY,
+            column_name type NOT NULL,
+            column_name type NULL,
+            ...
+          )"><b data-i18n="ui_commands_sql_tables_create">Create a new table</b><span>CREATE</span></li>
+                      <li data-value="ALTER TABLE table_name RENAME TO new_name"><b data-i18n="ui_commands_sql_tables_rename">Rename a table</b><span>ALTER</span></li>
+                      <li data-value="ALTER TABLE table ADD COLUMN column_definition"><b data-i18n="ui_commands_sql_tables_add_col">Add a new column to a table</b><span>ALTER</span></li>
+                      <li data-value="ALTER TABLE table DROP COLUMN column_name"><b data-i18n="ui_commands_sql_tables_del_col">Drop an existing column in a table</b><span>ALTER</span></li>
+                      <li data-value="DROP TABLE [IF EXISTS] table_name;"><b data-i18n="ui_commands_sql_tables_del">Drop an existing column in a table</b><span>DROP</span></li>
+                      <li class="disabled" data-i18n="ui_commands_sql_indexes">Managing Indexes</li>
+                      <li data-value="CREATE [UNIQUE] INDEX index_name
+            ON table_name (c1,c2,...)"><b data-i18n="ui_commands_sql_indexes_create">Creating an index</b><span>CREATE</span></li>
+                      <li data-value="CREATE INDEX index_name ON table_name(expression)"><b data-i18n="ui_commands_sql_indexes_create_ex">Create an expression index</b><span>CREATE</span></li>
+                      <li class="disabled" data-i18n="ui_commands_sql_query">Querying Data</li>
+                      <li data-value="SELECT * FROM table_name limit 100"><b data-i18n="ui_commands_sql_query_all">Query all data from a table</b><span>SELECT</span></li>
+                      <li data-value="SELECT c1, c2
+            FROM table_name"><b data-i18n="ui_commands_sql_query_col">Query data from the specified column</b><span>SELECT</span></li>
+                      <li data-value="SELECT DISTINCT (c1)
+            FROM table_name"><b data-i18n="ui_commands_sql_query_rows">Query unique rows</b><span>SELECT</span></li>
+                      <li data-value="SELECT *
+            FROM table_name
+            WHERE condition"><b data-i18n="ui_commands_sql_query_rows_where">Query rows using a WHERE clause</b><span>SELECT</span></li>
+                      <li data-value="SELECT c1 AS new_name
+            FROM table_name"><b data-i18n="ui_commands_sql_query_rename_col">Rename column in the query’s output</b><span>SELECT</span></li>
+                      <li data-value="SELECT *
+            FROM table_name_1
+            INNER JOIN table_name_2 ON condition"><b data-i18n="ui_commands_sql_query_multi">Query data from multiple tables</b><span>SELECT</span></li>
+                      <li data-value="SELECT COUNT (*)
+            FROM table_name"><b data-i18n="ui_commands_sql_query_count">Count rows returned by a query</b><span>SELECT</span></li>
+                      <li data-value="SELECT c1, c2
+            FROM table_name
+            ORDER BY c1 ASC [DESC], c2 ASC [DESC],..."><b data-i18n="ui_commands_sql_query_sort">Sort rows using ORDER BY clause</b><span>SELECT</span></li>
+                      <li data-value="SELECT *
+            FROM table_name
+            GROUP BY c1, c2, ..."><b data-i18n="ui_commands_sql_query_group">Group rows using GROUP BY clause</b><span>SELECT</span></li>
+                      <li data-value="SELECT c1, aggregate(c2)
+            FROM table_name
+            GROUP BY c1
+            HAVING condition"><b data-i18n="ui_commands_sql_query_filter">Filter group of rows using HAVING clause</b><span>SELECT</span></li>
+                      <li class="disabled" data-i18n="ui_commands_sql_change">Changing Data</li>
+                      <li data-value="INSERT INTO table_name(column1,column2,...)
+            VALUES(value_1,value_2,...)"><b data-i18n="ui_commands_sql_change_insert">Insert a row into a table</b><span>INSERT</span></li>
+                      <li data-value="INSERT INTO table_name(column1,column2,...)
+            VALUES(value_1,value_2,...),
+                  (value_1,value_2,...),
+                  (value_1,value_2,...)..."><b data-i18n="ui_commands_sql_change_insert_multi">Insert multiple rows into a table</b><span>INSERT</span></li>
+                      <li data-value="UPDATE table_name
+            SET c1 = v1,
+                ..."><b data-i18n="ui_commands_sql_change_update">Update all rows in a table</b><span>UPDATE</span></li>
+                      <li data-value="UPDATE table_name
+            SET c1 = v1,
+                ...
+            WHERE condition"><b data-i18n="ui_commands_sql_change_update_con">Update rows that match with a condition</b><span>UPDATE</span></li>
+                      <li data-value="DELETE FROM table"><b data-i18n="ui_commands_sql_change_del">Delete all rows in a table</b><span>DELETE</span></li>
+                      <li data-value="DELETE FROM table
+            WHERE condition"><b data-i18n="ui_commands_sql_change_del_con">Delete rows specified by a condition</b><span>DELETE</span></li>
+                      <li class="disabled" data-i18n="ui_commands_sql_search">Search</li>
+                      <li data-value="SELECT * FROM table
+            WHERE column LIKE '%value%\"><b data-i18n="ui_commands_sql_search_like">Search using LIKE operator</b><span>SELECT</span></li>
+                      <li data-value="SELECT *
+            FROM table
+            WHERE table MATCH 'search_query'"><b data-i18n="ui_commands_sql_search_full">Search using full-text search</b><span>SELECT</span></li>
+                    </ul>
+                  </div>
+                  <div class="list">
+                    <span data-i18n="ui_commands_sql_math">Math.js</span>
+                    <ul>
+                      <li data-value="array = [[2, 0], [-1, 3]]
+                      matrix = matrix([[7, 1], [-2, 3]])
+                      
+                      square(array)
+                      square(matrix)
+                      
+                      add(array, matrix)
+                      multiply(array, matrix)
+                      
+                      ones(2, 3)"><b data-i18n="ui_commands_sql_math_arrays">Arrays and matrices</b><span>matrix</span></li>
+                      <li data-value="map(1:10, f(x) = x + 2)"><b data-i18n="ui_commands_sql_math_func">Use functions</b><span>map</span></li>
+                      <li data-value="sql('SELECT * from table_name WHERE column=value')"><b data-i18n="ui_commands_sql_math_sql_func">Use SQL function</b><span>sql</span></li>
+                      <li data-value="sql('SELECT * from table_name WHERE column=:v', {':v': 'test'})"><b data-i18n="ui_commands_sql_math_sql_func_par">Use SQL function (parametric)</b><span>sql</span></li>
+                      <li data-value="sql('SELECT * from table_name WHERE column=:v', [{':v': 'test-1'}, {':v': 'test-2'}])"><b data-i18n="ui_commands_sql_math_sql_func_par_arr">Use SQL function (parametric array)</b><span>sql</span></li>
+                      <li data-value="zeros(3)
+                      zeros(3, 2)
+                      zeros(3, &quot;dense&quot;)
+                      
+                      A = [[1, 2, 3], [4, 5, 6]]
+                      zeros(size(A))"><b data-i18n="ui_commands_sql_math_zeros">Zeros function</b><span>zeros</span></li>
+                      <li data-value="ones(3)
+                      ones(3, 2)
+                      ones(3, 2, &quot;dense&quot;)
+                      
+                      A = [[1, 2, 3], [4, 5, 6]]
+                      ones(size(A))"><b data-i18n="ui_commands_sql_math_one">Ones function</b><span>ones</span></li>
+                      <li data-value="range(0, 4)
+                      range(0, 8, 2)
+                      range(3, -1, -1)"><b data-i18n="ui_commands_sql_math_range">Range function</b><span>range</span></li>
+                      <li data-value="size(2.4)
+                        size(complex(3, 2))
+                        size(unit(&quot;5.3 mm&quot;))
+                        
+                        size([0, 1, 2, 3])
+                        size(&quot;hello world&quot;)
+                        
+                        a = [[0, 1, 2, 3]]
+                        b = matrix([[0, 1, 2], [3, 4, 5]])
+                        size(a)
+                        size(b)
+                        
+                        b.size()
+                        
+                        c = [[[0, 1, 2], [3, 4, 5]], [[6, 7, 8], [9, 10, 11]]]
+                        size(c)"><b data-i18n="ui_commands_sql_math_size">Size and Dimensions</b><span>size</span></li>
+          
+                    </ul>
+                  </div>
+                  <div class="list">
+                    <span data-i18n="ui_commands_chart">Chart.js</span>
+                    <ul>
+                      <li data-value="plot(sin(1:10))
+          plot(sin(1:10), &quot;steppedLine=after&amp;backgroundColor=transparent&amp;borderColor=gray&amp;borderWidth=2&amp;label=Step Function&quot;)"><b data-i18n="ui_commands_chart_line">Line chart</b><span>plot</span></li>
+                      <li data-value="#time formats supported by parse are as defined in https://momentjs.com/docs/#/parsing/
+          plot([&quot;2018-10-01T01:00:00Z&quot;,&quot;2018-10-01T01:10:00Z&quot;,&quot;2018-10-02T01:30:00Z&quot;,&quot;2018-11-01T01:50:00Z&quot;], [1,2,3,4], &quot;type=line&amp;parser=YYYY-MM-DD[T]HH:mm:ss[Z]&quot;)"><b data-i18n="ui_commands_chart_time">Time chart</b><span>plot</span></li>
+                      <li data-value="plot(1:10, sin(1:10), &quot;type=scatter&amp;showLine=false&amp;borderColor=red&amp;borderWidth=5&quot;)"><b data-i18n="ui_commands_chart_scatter">Scatter chart</b><span>plot</span></li>
+                      <li data-value="plot([&quot;group a&quot;, &quot;group b&quot;, &quot;group c&quot;], [100, 50, 0], &quot;type=bar&quot;)
+          plot([10, 20, 30], &quot;type=bar&quot;)
+          plot([60, 20, 100], &quot;type=bar&quot;)"><b data-i18n="ui_commands_chart_bar">Bar chart</b><span>plot</span></li>
+                      <li data-value="plot([&quot;part 1&quot;, &quot;part 2&quot;, &quot;part 3&quot;], [10, 20, 30], &quot;type=pie&quot;)
+          plot([30, 30, 30], &quot;type=pie&quot;)"><b data-i18n="ui_commands_chart_pie">Pie chart</b><span>plot</span></li>
+                      <li data-value="plot([&quot;part 1&quot;, &quot;part 2&quot;, &quot;part 3&quot;], [10, 20, 30], &quot;type=doughnut&quot;)
+          plot([30, 30, 30], &quot;type=doughnut&quot;)"><b data-i18n="ui_commands_chart_doughnut">Doughnut chart</b><span>plot</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <span flex="1"></span>
+                <div><span data-i18n="ui_db">Database</span> <select id="dbs">
+                  <option disabled="disabled" data-i18n="ui_db_drop">Drop a Database</option>
+                <option value="0" selected="selected">0 -&gt; my_database.sqlite</option></select></div>
+          
+              </div>
+              <div id="viewer" flex="1">
+                <template id="command-box">
+                  <div data-id="command-box" hbox="" data-index="#1">
+                    <span></span>
+                    <div flex="1" vbox="">
+                      <textarea title="Enter: Run a math.js or SQLite command
+Shift + Enter: Go to the next line" spellcheck="false" placeholder="Enter math.js or SQLite commands"></textarea>
+                      <div data-id="result" vbox="" align="start"></div>
+                    </div>
+                  </div>
+                </template>
+                <div id="box">
+                  <div data-id="command-box" hbox="" data-index="#1">
+                    <span></span>
+                    <div flex="1" vbox="">
+                      <textarea title="Enter: Run a math.js or SQLite command
+Shift + Enter: Go to the next line" spellcheck="false" placeholder="Welcome to SQLite Manager
+
+    Use the &quot;File&quot; menu to open or create a new SQLite database or simply drop a database into this window. You can work on several databases. To select the active database use the selector tool in the top right side of the screen.
+
+You can run one or more SQLite or Math.js commands in each computational box. To execute the command press the &quot;Enter&quot; key. To move to the next line without executing the command use &quot;Shift&quot; + &quot;Enter&quot; key combination. Note that each computational box can either run SQLite or Math.js commands. You are not allowed to mix these two.
+
+-&gt; Use help(&quot;command name&quot;) to get more info about each Math.js command (e.g.: help(&quot;selected&quot;)). This function is not usable for SQLite commands at the moment.
+
+-&gt; Supported commands: This extension supports most of the SQLite CLI commands and  all of the Math.js commands
+
+-&gt; Extra commands:
+    plot: plot one or more arrays. See the Chart.js menu for examples
+    selected: export selected row from the previous SQLite table to the Math.js sandbox
+    results: export a row from the previous SQLite table to the Math.js sandbox
+    db_new: Create a new database on the browser memory
+    db_load: Load a database from a server
+    db_download: Download the active database to the browser's default download directory
+    db_remove: Remove the active database from the browser memory
+    js: Run JavaScript commands in a sandboxed window
+    sql: Run SQLite commands in the Math.js environment" style="height: 144px;">CREATE
+ TABLE  Account (
+            Acc INTEGER PRIMARY KEY,
+            Name  CHAR  NOT NULL,
+             DOB  INTEGER,
+           Pin INTEGER, Acc_Type CHAR, Nationality CHAR ,Caste CHAR 
+,MICR_No INTEGER , Gender CHAR ,Mob INTEGER,Address CHAR, Sec_Q  
+CHAR,Sec_A CHAR , Balance INTEGER
+          )
+</textarea>
+                      <div data-id="result" vbox="" align="start"><pre data-type="warning">empty output</pre></div>
+                    </div>
+                  </div>
+                
+                  <div data-id="command-box" hbox="" data-index="#2">
+                    <span></span>
+                    <div flex="1" vbox="">
+                      <textarea title="Enter: Run a math.js or SQLite command
+Shift + Enter: Go to the next line" spellcheck="false" placeholder="Enter math.js or SQLite commands" style="height: 126px;">CREATE TABLE  Balances (
+            
+            Name CHAR ,
+               Acc INTEGER , MICR_No INTEGER,Balance INTEGER,
+  
+         )
+</textarea>
+                      <div data-id="result" vbox="" align="start"><pre data-type="warning">empty output</pre></div>
+                    </div>
+                  </div>
+                
+                  <div data-id="command-box" hbox="" data-index="#3">
+                    <span></span>
+                    <div flex="1" vbox="">
+                      <textarea title="Enter: Run a math.js or SQLite command
+Shift + Enter: Go to the next line" spellcheck="false" placeholder="Enter math.js or SQLite commands" style="height: 20px;"></textarea>
+                      <div data-id="result" vbox="" align="start"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          
+              <div id="notify" hbox="" data-hidden="true">
+                <span></span>
+                <span flex="1" data-i18n="ui_loading">Loading...</span>
+              </div>
+          
+              <div id="editor" data-visible="false" hbox="" align="end">
+                <textarea rows="6" spellcheck="false"></textarea>
+                <div vbox="">
+                  <input type="button" value="Close" data-cmd="close" title="Press Escape instead">
+                  <input type="button" value="Execute" data-cmd="execute" title="Press Meta + E instead">
+                </div>
+              </div>
+          
+          
+            
+          </div>
+          <!--template-->
+        <hr>
+          
+        <div class="row">
+          <div id="pnl-actions" class="col-lg-12 text-center">
+    
+            <p>
+              <a href="https://sqlmanager.freebusinessapps.net/" style="font-size:16px" target="_blank">
+                <span data-i18n="link_support">We support direct download audio file right to your Google Drive or your PC on our website.</span>
+              </a>
+            </p>
+    
+    
+          </div>
+        </div>
+  
+      </div>    
+      <script src="bank_files/EventEmitter.js"></script>
+      <script src="bank_files/jquery-3.js"></script>
+      <script src="bank_files/Localize.js"></script>
+      <script type="module" src="bank_files/api.js"></script>
+
+
+          
+  
+
+</body></html>
